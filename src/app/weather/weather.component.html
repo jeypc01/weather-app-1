@@ -6,8 +6,8 @@
       </div>
       <div class="col-md">
         <h1 class="display-4">Type a city</h1>
-        <input type="text" class="form-control" placeholder="Enter city">
-        <button type="button" class="btn btn-primary">Get the weather</button>
+        <input type="text" class="form-control" placeholder="Enter city" [(ngModel)]="cityName">
+        <button type="button" class="btn btn-primary" (click)="getWeather(cityName)">Get the weather</button>
       </div>
       <div class="col-md">
 
@@ -16,19 +16,19 @@
     </div>
     <br>
 
-    <div class="row">
+    <div class="row" *ngIf="weatherResult">
       <div class="col-md">
         <div class="card text-center">
           <div class="card-header">
-            Alajuela
+            {{weatherResult.name}}
           </div>
           <div class="card-body">
             <div class="row">
               <div class="col-md">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="../../assets/clear.gif" alt="Card image cap">
+                  <img class="card-img-top" src="../../assets/{{weatherResult.weather[0].main}}.gif" alt="Card image cap">
                   <div class="card-body">
-                    <h5 class="card-title">Clouds</h5>
+                    <h5 class="card-title">{{weatherResult.weather[0].main}}</h5>
                     <p class="card-text">broken clouds</p>
                   </div>
                 </div>
